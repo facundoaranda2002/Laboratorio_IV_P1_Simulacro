@@ -1,0 +1,26 @@
+<br><br>
+    <div class="jumbotron">
+
+      <table style="max-width: 50%; margin-left: 15%;">
+        <thead>
+          <tr>
+            <th>Pais</th>
+            <th>Capital</th>
+            <th>Bandera</th>
+            <th *ngIf="mostrarSeleccionar">Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pais of paises">
+            <td>{{ pais.nombre }}</td>
+            <td>{{ pais.capital }}</td>
+            <td>
+              <img [src]="pais.bandera" alt="{{ pais.bandera }}" width="100">
+            </td>
+            <td *ngIf="mostrarSeleccionar">
+                <button (click)="seleccionar(pais)" class="btn btn-primary">X</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

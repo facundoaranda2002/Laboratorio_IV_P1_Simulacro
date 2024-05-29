@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+  <body class="bg-light">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Tabla paises</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <app-tabla-paises style="margin-left: -15%;margin-top: -15%;" (eventPaisSeleccionado)="cargarPais($event)" [mostrarSeleccionar]="true" [cargarPaises]="true"></app-tabla-paises>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <h4 class="mb-3">Alta actor</h4>
+          <form class="needs-validation" novalidate [formGroup]="formActor">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control"  formControlName="nombre" name="nombre">
+                <div *ngIf="formActor.controls['nombre'].errors?.['required'] && formActor.controls['nombre'].touched"  style="color: red;">
+                  Nombre es requerido
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Apellido</label>
+                <input type="text" class="form-control"  formControlName="apellido" name="apellido">
+                <div *ngIf="formActor.controls['apellido'].errors?.['required'] && formActor.controls['apellido'].touched"  style="color: red;">
+                  Apellido es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Nombre de usuario</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">"&#64;"</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="NombreUsuario" formControlName="nombreUsuario" name="nombreUsuario">
+                <div *ngIf="formActor.controls['nombreUsuario'].errors?.['required'] && formActor.controls['nombreUsuario'].touched"  style="color: red;">
+                  Nombre de usuario es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Correo<span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="tu@correo.com" formControlName="correo" name="correo">
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Direccion Uno</label>
+              <input type="text" class="form-control" id="address" placeholder="Calle 1234" formControlName="direccionUno" name="direccionUno">
+              <div *ngIf="formActor.controls['direccionUno'].errors?.['required'] && formActor.controls['direccionUno'].touched"  style="color: red;">
+                Direccion uno es requerido
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">Direccion Dos <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Calle 567" formControlName="direccionDos" name="direccionDos">
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Pais</label>
+                <input class="custom-select d-block w-100" id="country" required readonly formControlName="pais" name="pais">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">Capital</label>
+                <input class="custom-select d-block w-100" id="state" required readonly formControlName="capital" name="capital">
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="formActor.invalid" (click)="registrarActor()">Registrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

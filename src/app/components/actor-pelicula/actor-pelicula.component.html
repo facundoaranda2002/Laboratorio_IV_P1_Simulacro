@@ -1,0 +1,39 @@
+<main role="main">
+    <div class="container">
+        <h1 class="display-3">Listado de actores</h1>
+    </div>
+    <div >
+        <app-tabla-actor  
+        [mostrarDatosCompletos]="false"
+        [mostrarSeleccionar]="true"
+        [datos]=""
+        (eventActorSeleccionado)="mostrar($event)"
+      >
+      </app-tabla-actor>
+    </div>
+    
+
+    <div class="container" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Peliculas actor</h2>
+                <div style="margin-left:-400px;margin-top: 0;">
+                    <app-tabla-pelicula [mostrarSeleccionar]="false" [peliculas]="peliculasActor"></app-tabla-pelicula>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Informacion pais</h2>
+                <div style="margin-left: -50px;margin-top: 0;">
+                    <app-tabla-paises [mostrarSeleccionar]="false" [paises]="paisActor" [cargarPaises]="false"></app-tabla-paises>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Detalles actor</h2>
+                <br><br>
+                <app-detalle-actor [actor]="actorSeleccionado"></app-detalle-actor>
+            </div>
+        </div>
+        </div> 
+
+  
+  </main>

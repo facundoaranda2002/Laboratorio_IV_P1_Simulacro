@@ -1,0 +1,11 @@
+<div class="pelicula-detalle-container" *ngIf="pelicula">
+    <h2>{{ pelicula.nombre }}</h2>
+    <p>Tipo: {{ pelicula.tipo }}</p>
+    <p>Fecha de Estreno: {{ pelicula.fechaEstreno}}</p>
+    <p>Cantidad de Público: {{ pelicula.cantidadPublico }}</p>
+    <p>Actores: </p>
+    <ul>
+      <li *ngFor="let actor of pelicula.actores">{{actor.nombre}},{{actor.apellido}}</li>
+    </ul>
+    <p>Foto: <img [src]="pelicula.fotoPelicula" alt="{{ pelicula.nombre }}" width="200"></p>
+  </div>

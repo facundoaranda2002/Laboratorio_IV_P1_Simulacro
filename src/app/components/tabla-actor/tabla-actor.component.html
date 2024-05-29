@@ -1,0 +1,37 @@
+<br><br>
+    <div class="jumbotron">
+
+      <table style="max-width: 80%; margin-left: 15%;">
+        <thead>
+          <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th *ngIf="mostrarDatosCompletos">Nombre usuario</th>
+            <th *ngIf="mostrarDatosCompletos">Pais</th>
+            <th *ngIf="mostrarDatosCompletos">Capital</th>
+            <th *ngIf="mostrarDatosCompletos">Correo</th>
+            <th *ngIf="mostrarDatosCompletos">Direccion 1</th>
+            <th *ngIf="mostrarDatosCompletos">Direccion 2</th>
+            <th *ngIf="mostrarSeleccionar">Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actor of actores">
+            <td>{{ actor.apellido }}</td>
+            <td>{{ actor.nombre }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.nombreUsuario }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.pais }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.capital }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.correo }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.direccionUno }}</td>
+            <td *ngIf="mostrarDatosCompletos">{{ actor.direccionDos }}</td>
+            <!--<td>
+              <img [src]="pelicula.fotoPelicula" alt="{{ pelicula.nombre }}" width="100">
+            </td>-->
+            <td *ngIf="mostrarSeleccionar">
+                <button (click)="seleccionar(actor)" class="btn btn-primary">X</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

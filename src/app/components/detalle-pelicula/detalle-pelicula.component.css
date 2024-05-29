@@ -1,0 +1,29 @@
+/* Estilos para el contenedor principal del detalle de la película */
+.pelicula-detalle-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  /* Estilos para el título de la película */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para las propiedades de la película */
+  p {
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  /* Estilos para la imagen de la película */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+  }
+  

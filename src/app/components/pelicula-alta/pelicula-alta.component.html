@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+  <body class="bg-light">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-5 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Tabla Actores</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <ul class="list-group mb-2">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <app-tabla-actor  
+                    style="margin-left: -15%;margin-top: -15%;" 
+                    [mostrarDatosCompletos]="false"
+                    [mostrarSeleccionar]="true" 
+                    (eventActorSeleccionado)="cargarActor($event)" >
+              </app-tabla-actor>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-7 order-md-1">
+          <h4 class="mb-3">Alta Pelicula</h4>
+          <form class="needs-validation" novalidate [formGroup]="formActor">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control"  formControlName="nombre" name="nombre">
+                <div *ngIf="formActor.controls['nombre'].errors?.['required'] && formActor.controls['nombre'].touched"  style="color: red;">
+                  Nombre es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="tipo">Tipo: </label>
+                <select id="tipo" name="tipo" formControlName="tipo" name="tipo">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="accion">Accion</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="terror">Terror</option>
+                    <option value="suspenso">Suspenso</option>
+                    <option value="amor">Amor</option>
+                  </select>
+                <div *ngIf="formActor.controls['tipo'].errors?.['required'] && formActor.controls['tipo'].touched" style="color: red;">
+                  Tipo es requerido
+                </div>
+              </div>
+
+            <div class="mb-3">
+              <label for="fechaEstreno">Fecha Estreno</label>
+              <div class="input-group">
+                <input type="date" class="form-control" id="fechaEstreno" placeholder="Fecha Estreno" formControlName="fechaEstreno" name="fechaEstreno">
+                <br>
+                <div *ngIf="formActor.controls['fechaEstreno'].errors?.['required'] && formActor.controls['fechaEstreno'].touched" style="color: red;">
+                  Fecha de estreno es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="cantidadPublico">Cantidad Publico</label>
+              <input type="number" class="form-control" id="cantidadPublico" placeholder="Cantidad Publico" formControlName="cantidadPublico" name="cantidadPublico">
+              <div *ngIf="formActor.controls['cantidadPublico'].errors?.['required'] && formActor.controls['cantidadPublico'].touched" style="color: red;">
+                Cantidad de publico es requerido
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="fotoPelicula">Foto Pelicula</label>
+              <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" id="fotoPelicula" placeholder="Foto Pelicula" formControlName="fotoPelicula" name="fotoPelicula">
+              <div *ngIf="formActor.controls['fotoPelicula'].errors?.['required'] && formActor.controls['fotoPelicula'].touched" style="color: red;">
+                 Foto de la pelicula es requerido
+              </div>
+            </div>
+
+            <hr class="mb-4">
+                <h2>Actores seleccionados</h2>
+                <div style="padding-right: 100%;margin-top: -10%;">
+                    <app-tabla-actor  
+                    [mostrarDatosCompletos]="true"
+                    [mostrarSeleccionar]="false"
+                    [datos]="actoresCargados"
+                  >
+                  </app-tabla-actor>
+                </div>
+                <div *ngIf="habilitarErrorActor" style="color: red;">
+                  Debe seleccionar minimo un actor
+               </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit"  (click)="registrarActor()">Registrar</button><!--[disabled]="formActor.invalid"-->
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

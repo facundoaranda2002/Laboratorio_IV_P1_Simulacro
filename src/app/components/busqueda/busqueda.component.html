@@ -1,0 +1,32 @@
+<main role="main">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <h1 class="display-3">Listado de peliculas </h1>
+      </div>
+      <div class="col-2" style="margin-left: -5%;margin-top: 1%;">
+        <button class="btn btn-primary" (click)="cambiarVista()" style="margin-left: 20%;" >Cambiar vista</button>
+      </div> 
+    </div>
+    
+    <app-tabla-pelicula [peliculas]="peliculas" (event)="mostrar($event)" ></app-tabla-pelicula>
+    <br>
+    <div *ngIf="mostrarOpciones" >
+        <div class="container" >
+            <div class="row">
+              <div class="col-md-2">
+                <h2>Borrar</h2>
+                <button class="btn btn-primary" (click)="borrarPelicula()">Borrar pelicula</button>
+              </div>
+              <div class="col-md-4">
+                <h2>Mostrar</h2>
+                <app-detalle-pelicula [pelicula]="peliculaSeleccionada"></app-detalle-pelicula>
+              </div>
+              <div class="col-md-2">
+                <h2>Modificar</h2>
+              </div>
+            </div>
+          </div> 
+    </div>
+  
+  </main>
